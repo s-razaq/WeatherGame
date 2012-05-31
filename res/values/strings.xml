@@ -4,5 +4,13 @@
     <string name="hello">Hello World, BestWeatherGameEverActivity!</string>
     <string name="app_name">BestWeatherGameEver</string>
     <string name="theBestWeatherGameEver">The Best Weather Game Ever</string>
+    <string name="choose_difficutly">Choose the difficulty</string>
+    <string name="easy_button">Easy</string>
+    <string name="middleButton">Middle</string>
+    <string name="hardButton">Hard</string>
+    <string name="PunktestandAnzeige">Punktestand: 0</string>
+    <string name="levelAnzeige">&quot;Level: 0&quot;</string>
+    <string name="stadt">Stadt</string>
+    <string name="enterButton">Enter</string>
 
 </resources>
