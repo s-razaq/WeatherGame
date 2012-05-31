@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, BestWeatherGameEverActivity!</string>
+    <string name="app_name">BestWeatherGameEver</string>
+    <string name="theBestWeatherGameEver">The Best Weather Game Ever</string>
+
+</resources>
