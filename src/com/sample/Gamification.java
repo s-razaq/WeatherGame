@@ -21,9 +21,16 @@ public class Gamification {
 	
 	public int newScoreForResult(int deviation){
 		int level = this.calculateLevel();
-		score += 12-level-deviation;
-		System.out.println("new score:" + score);		
-		return score;
+		int newScore = score + 12-level-deviation;
+		System.out.println("new score:" + score);	
+		//check if new level was reached
+		for(int i = 1;i<=pointsNeededForLevel.length;i++){
+			if (score < pointsNeededForLevel[i-1]<newScore){
+				//new level reached
+				return;
+			} 
+		}
+		return score = newScore;
 	}
 	
 	public int getLevel(){
