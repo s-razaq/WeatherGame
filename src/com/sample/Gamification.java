@@ -27,7 +27,10 @@ public class Gamification {
 		for(int i = 1;i<=pointsNeededForLevel.length;i++){
 			if (score < pointsNeededForLevel[i-1]<newScore){
 				//new level reached
-				return;
+				
+				//todo: throw toast message
+				
+				break;
 			} 
 		}
 		return score = newScore;
