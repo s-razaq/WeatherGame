@@ -2,7 +2,7 @@ package com.sample;
 
 public class Gamification {
 	private static Gamification instance = null;
-	private int score;
+	private int score = 0;
 	private String[] levelDescription = {"Total Beginner", "Weather Noob", "Estimator", "Weather Expert", "Master Forecaster", "Weather Wizard"};
 	private int[] pointsNeededForLevel = {0,40,100,200,350,555};
 
@@ -38,6 +38,10 @@ public class Gamification {
 	
 	public int getLevel(){
 		return this.calculateLevel();
+	}
+	
+	public String getLevelName(){
+		return levelDescription[getLevel()-1];
 	}
 	
 	public int getScore(){
