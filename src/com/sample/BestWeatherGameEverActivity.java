@@ -36,6 +36,9 @@ public class BestWeatherGameEverActivity extends Activity {
         TextView levelAnzeige = (TextView) findViewById(R.id.LevelAnzeige);
         levelAnzeige.setText(score.getLevelName());
         
+        RandCity randCity = RandCity.getInstance(this.getApplicationContext());
+        randCity.loadCSV();
+       
     }
     
     
