@@ -1,4 +1,4 @@
-
+package com.sample;
 
 public class Gamification {
 	private static Gamification instance = null;
@@ -25,7 +25,7 @@ public class Gamification {
 		System.out.println("new score:" + score);	
 		//check if new level was reached
 		for(int i = 1;i<=pointsNeededForLevel.length;i++){
-			if (score < pointsNeededForLevel[i-1]<newScore){
+			if (score < pointsNeededForLevel[i-1] && pointsNeededForLevel[i-1] <= newScore){
 				//new level reached
 				
 				//todo: throw toast message
