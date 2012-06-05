@@ -37,7 +37,8 @@
         android:layout_above="@+id/middleButton"
         android:layout_alignRight="@+id/hardButton"
         android:layout_marginBottom="33dp"
-        android:text="@string/easy_button" />
+        android:text="@string/easy_button"
+        android:onClick="onClickEasy" />
 
     <TextView
         android:id="@+id/LevelAnzeige"
