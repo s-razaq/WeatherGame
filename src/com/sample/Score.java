@@ -1,5 +1,12 @@
 package com.sample;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import android.os.Environment;
+
 public class Score {
 	
 	public Score(){
