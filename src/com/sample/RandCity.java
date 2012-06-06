@@ -77,7 +77,7 @@ public class RandCity extends AsyncTask {
 		
 		InputStream stream = null;
 		BufferedInputStream readbuffer = null; 
-        byte[] buffer = new byte[10000000];
+        byte[] buffer = new byte[100000];
         int bytesRead; 
         try {
             stream = assetManager.open(iDifficulty+".csv");
