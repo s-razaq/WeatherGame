@@ -47,4 +47,16 @@ public class BestWeatherGameEverActivity extends Activity {
     	intent.putExtra("difficulty", DIFF_EASY);
     	startActivity(intent);
     }
+    
+    public void onClickMedium(final View myView) {
+    	final Intent intent = new Intent(this, GameActivity.class);
+    	intent.putExtra("difficulty", DIFF_MEDIUM);
+    	startActivity(intent);
+    }
+    
+    public void onClickHard(final View myView) {
+    	final Intent intent = new Intent(this, GameActivity.class);
+    	intent.putExtra("difficulty", DIFF_HARD);
+    	startActivity(intent);
+    }
 }

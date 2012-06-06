@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/middleButton" />
+        android:text="@string/middleButton"
+        android:onClick="onClickMedium" />
 
     <Button
         android:id="@+id/hardButton"
@@ -18,7 +19,8 @@
         android:layout_below="@+id/middleButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:text="@string/hardButton" />
+        android:text="@string/hardButton"
+        android:onClick="onClickHard" />
 
     <TextView
         android:id="@+id/PunktestandAnzeige"
