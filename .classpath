@@ -4,5 +4,13 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="/wheel/src/kankan/wheel/widget/ItemsRange.java"/>
+	<classpathentry kind="lib" path="/wheel/src/kankan/wheel/widget/OnWheelChangedListener.java"/>
+	<classpathentry kind="lib" path="/wheel/src/kankan/wheel/widget/OnWheelClickedListener.java"/>
+	<classpathentry kind="lib" path="/wheel/src/kankan/wheel/widget/OnWheelScrollListener.java"/>
+	<classpathentry kind="lib" path="/wheel/src/kankan/wheel/widget/WheelAdapter.java"/>
+	<classpathentry kind="lib" path="/wheel/src/kankan/wheel/widget/WheelRecycle.java"/>
+	<classpathentry kind="lib" path="/wheel/src/kankan/wheel/widget/WheelScroller.java"/>
+	<classpathentry kind="lib" path="/wheel/src/kankan/wheel/widget/WheelView.java"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

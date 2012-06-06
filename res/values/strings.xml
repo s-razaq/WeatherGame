@@ -12,5 +12,6 @@
     <string name="levelAnzeige">&quot;Level: 0&quot;</string>
     <string name="stadt">Stadt</string>
     <string name="enterButton">Enter</string>
+    <string name="wheel">wheel</string>
 
 </resources>
