@@ -1,10 +1,15 @@
 package com.sample;
 
-public class Gamification {
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+public class Gamification extends Activity{
 	private static Gamification instance = null;
 	private int score = 0;
 	private String[] levelDescription = {"Total Beginner", "Weather Noob", "Estimator", "Weather Expert", "Master Forecaster", "Weather Wizard"};
 	private int[] pointsNeededForLevel = {0,40,100,200,350,555};
+    private SharedPreferences settings;
 
 	 public static Gamification getInstance() {
 	        if (instance == null) {
@@ -15,6 +20,18 @@ public class Gamification {
 	
 	private Gamification(){
 		//score = aus Settings laden
+	      settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+	      if(!settings.contains("score")){
+		      SharedPreferences.Editor editor = settings.edit();
+		      editor.putInt("score", 0);
+		      // Commit the edits!
+		      editor.commit();
+	      } else {
+	    	  score = settings.getInt("score",0);
+	      }
+
+
+
 		
 	}
 	
@@ -22,7 +39,12 @@ public class Gamification {
 	public int newScoreForResult(int deviation){
 		int level = this.calculateLevel();
 		int newScore = score + 12-level-deviation;
-		System.out.println("new score:" + score);	
+		
+	      SharedPreferences.Editor editor = settings.edit();
+	      editor.putInt("score", newScore);
+	      editor.commit();
+		
+		System.out.println("new score:" + newScore);	
 		//check if new level was reached
 		for(int i = 1;i<=pointsNeededForLevel.length;i++){
 			if (score < pointsNeededForLevel[i-1] && pointsNeededForLevel[i-1] <= newScore){
@@ -38,6 +60,14 @@ public class Gamification {
 	
 	public int getLevel(){
 		return this.calculateLevel();
+	}
+	
+	public boolean isMediumLevelActivated(){
+		return (this.calculateLevel()>2);
+	}
+	
+	public boolean isExpertLevelActivated(){
+		return (this.calculateLevel()>4);
 	}
 	
 	public String getLevelName(){
