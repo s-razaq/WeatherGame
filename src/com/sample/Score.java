@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.os.Environment;
-
+//imports noch nicht richtig
 public class Score {
 	int score = 0;
 	String filename = "score";
