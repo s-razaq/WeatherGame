@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+
     <TextView
         android:id="@+id/theBestWeatherGameEver2"
         android:layout_width="wrap_content"
@@ -12,16 +12,6 @@
         android:layout_marginTop="16dp"
         android:text="@string/theBestWeatherGameEver"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/enterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="84dp"
-        android:text="@string/enterButton" />
-    
 
     <TextView
         android:id="@+id/stadt"
@@ -32,5 +22,22 @@
         android:layout_marginTop="28dp"
         android:text="@string/stadt"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/enterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:text="@string/enterButton" />
+
+    <kankan.wheel.widget.WheelView
+        android:id="@+id/value"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_alignLeft="@+id/enterButton"
+        android:layout_alignRight="@+id/stadt"
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>

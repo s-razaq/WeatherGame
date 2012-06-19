@@ -17,23 +17,23 @@ public class Gamification extends Activity{
 	        }
 	        return instance;
 	    }
-	
-	private Gamification(){
-		//score = aus Settings laden
-	      settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-	      if(!settings.contains("score")){
-		      SharedPreferences.Editor editor = settings.edit();
-		      editor.putInt("score", 0);
-		      // Commit the edits!
-		      editor.commit();
-	      } else {
-	    	  score = settings.getInt("score",0);
-	      }
-
-
-
-		
-	}
+////
+////	private Gamification(){
+////		//score = aus Settings laden
+////	      settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+////	      if(!settings.contains("score")){
+////		      SharedPreferences.Editor editor = settings.edit();
+////		      editor.putInt("score", 0);
+////		      // Commit the edits!
+////		      editor.commit();
+////	      } else {
+////	    	  score = settings.getInt("score",0);
+////	      }
+//
+//
+//
+//		
+//	}
 	
 	
 	public int newScoreForResult(int deviation){

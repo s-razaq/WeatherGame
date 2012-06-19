@@ -17,23 +17,27 @@ public class HowToUseWheelPickerActivity extends Activity {
         final WheelView temValue = (WheelView) findViewById(R.id.value);
         temValue.setViewAdapter(new NumberAdapter(this));
         temValue.setCurrentItem(3);
-
+        
 	}
 	
 	/**
      * Adapter for numbers
      */
-    private class NumberAdapter extends AbstractWheelTextAdapter {
+    public class NumberAdapter extends AbstractWheelTextAdapter {
         // Countries names
-        private int values[] =
-            new int[] {1,2,3,4,5,6,7};
+    	
+        private int values[] = new int [100];
         
         /**
          * Constructor
          */
         protected NumberAdapter(Context context) {
             super(context, R.layout.wheel_picker_layout, NO_RESOURCE);
-            setItemTextResource(R.id.country_name);
+            setItemTextResource(R.id.value);
+          //fill array
+            for (int i = 0; i <= 99; i++){
+    	        	values[i] = (-50) + i;
+    	        }
         }
 
         @Override
