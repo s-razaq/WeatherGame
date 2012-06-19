@@ -18,22 +18,23 @@ public class Gamification extends Activity{
 	        return instance;
 	    }
 ////
-////	private Gamification(){
+private Gamification(){
 ////		//score = aus Settings laden
+			 SharedPreferences settings = this.getSharedPreferences("WeatherApp", MODE_WORLD_READABLE);
 ////	      settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-////	      if(!settings.contains("score")){
-////		      SharedPreferences.Editor editor = settings.edit();
-////		      editor.putInt("score", 0);
-////		      // Commit the edits!
-////		      editor.commit();
-////	      } else {
-////	    	  score = settings.getInt("score",0);
-////	      }
+	      if(!settings.contains("score")){
+		      SharedPreferences.Editor editor = settings.edit();
+		      editor.putInt("score", 0);
+		      // Commit the edits!
+		      editor.commit();
+   } else {
+	    	  score = settings.getInt("score",0);
+      }
 //
 //
 //
-//		
-//	}
+//		#
+	 }
 	
 	
 	public int newScoreForResult(int deviation){
