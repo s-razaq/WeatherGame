@@ -17,7 +17,7 @@ public class BestWeatherGameEverActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
-        Gamification score = Gamification.getInstance();
+        Gamification score = Gamification.getInstance(this.getApplicationContext());
         Button easyButton =(Button) findViewById(R.id.easyButton);
         easyButton.setClickable(true);
         Button middleButton =(Button) findViewById(R.id.middleButton);

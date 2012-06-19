@@ -96,6 +96,9 @@ public class GameActivity extends Activity {
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
+					Gamification game = Gamification.getInstance(getApplicationContext());
+					game.newScoreForResult(5);
+					System.out.println(game.getScore());
 					alert.show();
 				}
 	        	

@@ -1,6 +1,7 @@
 package com.sample;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -10,20 +11,22 @@ public class Gamification extends Activity{
 	private String[] levelDescription = {"Total Beginner", "Weather Noob", "Estimator", "Weather Expert", "Master Forecaster", "Weather Wizard"};
 	private int[] pointsNeededForLevel = {0,40,100,200,350,555};
     private SharedPreferences settings;
+    private Context ctx;
 
-	 public static Gamification getInstance() {
+	 public static Gamification getInstance(Context ctx) {
+
 	        if (instance == null) {
-	            instance = new Gamification();
+	            instance = new Gamification(ctx);
 	        }
 	        return instance;
 	    }
 ////
-private Gamification(){
-////		//score = aus Settings laden
-			 SharedPreferences settings = this.getSharedPreferences("WeatherApp", MODE_WORLD_READABLE);
-////	      settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+private Gamification(Context ctx){
+	 this.ctx = ctx;
+////		//score = aus Settings laden######
+	SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(ctx);
 	      if(!settings.contains("score")){
-		      SharedPreferences.Editor editor = settings.edit();
+	    	  SharedPreferences.Editor editor = settings.edit();
 		      editor.putInt("score", 0);
 		      // Commit the edits!
 		      editor.commit();
@@ -41,6 +44,7 @@ private Gamification(){
 		int level = this.calculateLevel();
 		int newScore = score + 12-level-deviation;
 		
+		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(ctx);		
 	      SharedPreferences.Editor editor = settings.edit();
 	      editor.putInt("score", newScore);
 	      editor.commit();
