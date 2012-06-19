@@ -8,16 +8,36 @@ import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
 public class GameActivity extends Activity {
+	
+	TextView stadt;
+	String difficulty;
+	Button enterButton;
+	
+	public void getNewCity() {
+	    
+        RandCity randCity = RandCity.getInstance(this.getApplicationContext());
+        String city = randCity.getCity(difficulty);
+        stadt.setText(city);
+	}
+	
+	 public void returnToBestWeatherGameEverActivity(){
+     	
+     	finish();
+     }
 	
 	public void onCreate (Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -25,11 +45,11 @@ public class GameActivity extends Activity {
 	        
 	        final Intent intent = this.getIntent();
 
-	        String difficulty = intent.getStringExtra("difficulty");
+	        difficulty = intent.getStringExtra("difficulty");
 	        System.out.println(difficulty);
 	        
-	        TextView stadt = (TextView) findViewById(R.id.stadt);
-	        Button enterButton =(Button) findViewById(R.id.enterButton);
+	        stadt = (TextView) findViewById(R.id.stadt);
+	        enterButton =(Button) findViewById(R.id.enterButton);
 	        
 	        //Random City
 	        RandCity randCity = RandCity.getInstance(this.getApplicationContext());
@@ -39,5 +59,44 @@ public class GameActivity extends Activity {
 	        WheelView temValue = (WheelView) findViewById(R.id.value);
 	        temValue.setViewAdapter(new NumberClass(this));
 	        temValue.setCurrentItem(60);
+	        
+	        //Dialog
+	        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	        builder.setMessage("Do you want to continue?")
+	               .setCancelable(false)
+	               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	                   public void onClick(DialogInterface dialog, int id) {
+	                	   //hier muss Methode zum Punkte berechnen aufgerufen werden
+	                	   
+	                	   //Show new City
+	                	   getNewCity();
+	                	   dialog.cancel();
+	                   }
+	               })
+	               .setNegativeButton("Back to menu", new DialogInterface.OnClickListener() {
+	                   public void onClick(DialogInterface dialog, int id) {
+	                	   //hier muss Methode zum Punkte berechnen aufgerufen werden
+	                	   
+	                	   returnToBestWeatherGameEverActivity();
+	                   }
+	               });
+	        final AlertDialog alert = builder.create();
+	        
+	        
+	        //PopUp 
+	        //PopupWindow evaluationPopup = new PopupWindow();
+	        
+	        //activate enterButton
+	        enterButton.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					alert.show();
+				}
+	        	
+	        });
+	   
+	        
 	   }
 }
