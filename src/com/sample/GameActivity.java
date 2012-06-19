@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -61,7 +62,10 @@ public class GameActivity extends Activity {
 	        temValue.setCurrentItem(60);
 	        
 	        //Dialog
+	        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+	        View layout = inflater.inflate(R.layout.dialog, (ViewGroup) findViewById(R.id.dialogRoot));
 	        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	        builder.setView(layout);
 	        builder.setMessage("Do you want to continue?")
 	               .setCancelable(false)
 	               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
