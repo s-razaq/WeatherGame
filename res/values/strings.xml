@@ -13,5 +13,10 @@
     <string name="stadt">Stadt</string>
     <string name="enterButton">Enter</string>
     <string name="wheel">wheel</string>
+    <string name="userAnswer">userAnswer</string>
+    <string name="currentTemperature">currentTemperature</string>
+    <string name="deviation">deviation</string>
+    <string name="currentLevel">currentLevel</string>
+    <string name="currentPoints">currentPoints</string>
 
 </resources>

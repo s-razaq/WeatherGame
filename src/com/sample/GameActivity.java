@@ -1,6 +1,6 @@
 package com.sample;
 
-import com.sample.HowToUseWheelPickerActivity.NumberAdapter;
+
 
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
