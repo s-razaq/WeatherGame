@@ -18,7 +18,7 @@ public class NumberClass extends AbstractWheelTextAdapter {
             for (int i = 0; i <= 99; i++){
     	        	values[i] = (-50) + i;
     	        }
-            setItemTextResource(R.id.value);
+            setItemTextResource(R.id.country_name);
         }
 
         @Override

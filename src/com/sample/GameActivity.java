@@ -38,6 +38,6 @@ public class GameActivity extends Activity {
 	         
 	        WheelView temValue = (WheelView) findViewById(R.id.value);
 	        temValue.setViewAdapter(new NumberClass(this));
-	        temValue.setCurrentItem(3);
+	        temValue.setCurrentItem(60);
 	   }
 }
