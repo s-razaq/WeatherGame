@@ -12,28 +12,34 @@ public class BestWeatherGameEverActivity extends Activity {
 	public static final String DIFF_EASY = "easy";
 	public static final String DIFF_MEDIUM = "medium";
 	public static final String DIFF_HARD = "hard";
+	public static Gamification score;
+	public static Button easyButton;
+	public static Button middleButton;
+	public static Button hardButton;
+	public static TextView punktestandAnzeige;
+	public static TextView levelAnzeige;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);
-        Gamification score = Gamification.getInstance(this.getApplicationContext());
-        Button easyButton =(Button) findViewById(R.id.easyButton);
+        score = Gamification.getInstance(this.getApplicationContext());
+        easyButton =(Button) findViewById(R.id.easyButton);
         easyButton.setClickable(true);
-        Button middleButton =(Button) findViewById(R.id.middleButton);
+        middleButton =(Button) findViewById(R.id.middleButton);
         if (score.getScore()<= 100){ //100 variabel
         	middleButton.setClickable(false);
         	middleButton.getBackground().setAlpha(50);
         }
-        Button hardButton =(Button) findViewById(R.id.hardButton);
+        hardButton =(Button) findViewById(R.id.hardButton);
         if (score.getScore()<= 350){ //350 variabel
         	hardButton.setClickable(false);
         	hardButton.getBackground().setAlpha(50);
         }
-        TextView punktestandAnzeige = (TextView) findViewById(R.id.PunktestandAnzeige);
+        punktestandAnzeige = (TextView) findViewById(R.id.PunktestandAnzeige);
         int i = score.getScore();
         punktestandAnzeige.setText("" + i);
-        TextView levelAnzeige = (TextView) findViewById(R.id.LevelAnzeige);
+        levelAnzeige = (TextView) findViewById(R.id.LevelAnzeige);
         levelAnzeige.setText(score.getLevelName());
         
         RandCity randCity = RandCity.getInstance(this.getApplicationContext());
@@ -58,5 +64,23 @@ public class BestWeatherGameEverActivity extends Activity {
     	final Intent intent = new Intent(this, GameActivity.class);
     	intent.putExtra("difficulty", DIFF_HARD);
     	startActivity(intent);
+    }
+    public void onResume(){
+    	super.onResume();
+    	score = Gamification.getInstance(this.getApplicationContext());
+        easyButton.setClickable(true);
+        if (score.getScore()<= 100){ //100 variabel
+        	middleButton.setClickable(false);
+        	middleButton.getBackground().setAlpha(50);
+        }
+        if (score.getScore()<= 350){ //350 variabel
+        	hardButton.setClickable(false);
+        	hardButton.getBackground().setAlpha(50);
+        }
+        int i = score.getScore();
+        punktestandAnzeige.setText("" + i);
+        levelAnzeige = (TextView) findViewById(R.id.LevelAnzeige);
+        levelAnzeige.setText(score.getLevelName());
+        
     }
 }

@@ -51,7 +51,7 @@ public class WeatherService {
 		return instance;
 	}
 
-	public double getTemperature(String city) {
+	public int getTemperature(String city) {
 		requestValue = city;
 		postRequest();
 		return parseJSON(jsonResponse.toString());
@@ -89,12 +89,12 @@ public class WeatherService {
 
 	}
 
-	private double parseJSON(String value) {
-		double d = 404;
+	private int parseJSON(String value) {
+		int d = 404;
 		try {
 			JSONObject jsonObj = new JSONObject(value).getJSONObject("data")
 					.getJSONArray("current_condition").getJSONObject(0);
-			d = Double.parseDouble(jsonObj.getString("temp_C"));
+			d = Integer.parseInt(jsonObj.getString("temp_C"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

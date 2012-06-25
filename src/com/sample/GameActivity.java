@@ -27,11 +27,14 @@ public class GameActivity extends Activity {
 	TextView stadt;
 	String difficulty;
 	Button enterButton;
+	WeatherService ws;
+	static String city;
+	WheelView temValue;
 	
 	public void getNewCity() {
 	    
         RandCity randCity = RandCity.getInstance(this.getApplicationContext());
-        String city = randCity.getCity(difficulty);
+        city = randCity.getCity(difficulty);
         stadt.setText(city);
 	}
 	
@@ -39,10 +42,18 @@ public class GameActivity extends Activity {
      	
      	finish();
      }
+	 
+	 public int compareResult(){//Parameter ist die aktuelle Einstellung des Wheels
+		 int ergebnis = ws.getTemperature(city); //Webservice Daten holen
+		 int deviation;
+		 deviation = Math.abs(ergebnis - temValue.getCurrentItem()); //Abweichung für Gamification
+		 return deviation;
+	 }
 	
 	public void onCreate (Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.play_screen);
+	        ws = WeatherService.getInstance();
 	        
 	        final Intent intent = this.getIntent();
 
@@ -54,10 +65,10 @@ public class GameActivity extends Activity {
 	        
 	        //Random City
 	        RandCity randCity = RandCity.getInstance(this.getApplicationContext());
-	        String city = randCity.getCity(difficulty);
+	        city = randCity.getCity(difficulty);
 	        stadt.setText(city);
 	         
-	        WheelView temValue = (WheelView) findViewById(R.id.value);
+	        temValue = (WheelView) findViewById(R.id.value);
 	        temValue.setViewAdapter(new NumberClass(this));
 	        temValue.setCurrentItem(60);
 	        
@@ -97,7 +108,7 @@ public class GameActivity extends Activity {
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
 					Gamification game = Gamification.getInstance(getApplicationContext());
-					game.newScoreForResult(5);
+					game.newScoreForResult(compareResult());
 					System.out.println(game.getScore());
 					alert.show();
 				}
