@@ -2,42 +2,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/theBestWeatherGameEver2"
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="@string/theBestWeatherGameEver"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:gravity="center"
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/stadt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/theBestWeatherGameEver2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="@string/stadt"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            android:layout_weight="1"
+            android:scaleType="fitStart"
+            android:src="@drawable/bgimageplay" />
 
-    <Button
-        android:id="@+id/enterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:text="@string/enterButton" />
+        <TextView
+            android:id="@+id/theBestWeatherGameEver2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:text="@string/theBestWeatherGameEver"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/stadt"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="14dp"
+            android:layout_weight="1"
+            android:text="@string/stadt"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <kankan.wheel.widget.WheelView
+            android:id="@+id/value"
+            android:layout_width="50dp"
+            android:layout_height="150dp"
+            android:layout_weight="2.37" />
 
-    <kankan.wheel.widget.WheelView
-        android:id="@+id/value"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_alignLeft="@+id/enterButton"
-        android:layout_alignRight="@+id/stadt"
-        android:layout_centerVertical="true" />
+        <Button
+            android:id="@+id/enterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp"
+            android:layout_weight="1"
+            android:text="@string/enterButton" />
+
+    </LinearLayout>
 
 </RelativeLayout>
