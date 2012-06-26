@@ -32,16 +32,6 @@
         android:text="Deviaton:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/deviation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView5"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignLeft="@+id/currentTemperature"
-        android:text="@string/deviation"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <RatingBar
         android:id="@+id/ratingBar1"
         android:layout_width="wrap_content"
@@ -58,24 +48,14 @@
         android:text="Score:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/currentPoints"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView7"
-        android:layout_alignBottom="@+id/textView7"
-        android:layout_centerHorizontal="true"
-        android:text="@string/currentPoints"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
+   <!-- <TextView
         android:id="@+id/currentLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/ratingBar1"
         android:text="@string/currentLevel"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />  -->
 
     <TextView
         android:id="@+id/textView1"
@@ -95,6 +75,25 @@
         android:layout_alignBottom="@+id/textView1"
         android:layout_toRightOf="@+id/textView3"
         android:text="@string/userAnswer"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/currentPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignLeft="@+id/userAnswer"
+        android:text="@string/currentPoints"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/deviation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ratingBar1"
+        android:layout_alignLeft="@+id/userAnswer"
+        android:text="@string/deviation"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

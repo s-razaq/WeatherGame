@@ -98,13 +98,13 @@ public class RandCity extends AsyncTask {
             for(int i = 0; i < splitArrayLine.length; i++) {
             	splitArrayTab = splitArrayLine[i].split("\t");
 
-            	if(iDifficulty.equals("easy")) easyList.add(splitArrayTab[1].toString());
-            	if(iDifficulty.equals("medium")) mediumList.add(splitArrayTab[1].toString());
+            	if(iDifficulty.equals("easy")) easyList.add(splitArrayTab[1].toString()+";"+splitArrayTab[2].toString());
+            	if(iDifficulty.equals("medium")) mediumList.add(splitArrayTab[1].toString()+";"+splitArrayTab[2].toString());
             	if(iDifficulty.equals("hard")) {
             		String lati = splitArrayTab[3].toString();
             		String longi =  splitArrayTab[4].toString();
             		longi = longi.substring(0, longi.length()-2);
-            		hardList.add(lati + "," + longi);
+            		hardList.add(lati + "," + longi + ";" + splitArrayTab[2].toString());
             	}
             }
             
