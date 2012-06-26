@@ -94,7 +94,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView7"
         android:layout_alignBottom="@+id/textView7"
-        android:layout_alignLeft="@+id/userAnswer"
         android:text="@string/currentPoints"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
