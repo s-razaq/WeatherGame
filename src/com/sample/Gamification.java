@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 public class Gamification extends Activity {
 	private static Gamification instance = null;
@@ -54,9 +55,12 @@ public class Gamification extends Activity {
 			if (score < pointsNeededForLevel[i - 1]
 					&& pointsNeededForLevel[i - 1] <= newScore) {
 				// new level reached
-
-				// todo: throw toast message
-
+				int duration = Toast.LENGTH_LONG;
+				score = newScore;
+				CharSequence text = "Congratulations! You reached the level " + this.getLevelName();
+				System.out.println(text);
+				Toast toast = Toast.makeText(this.ctx, text, duration);
+				toast.show();						
 				break;
 			}
 		}
