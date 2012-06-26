@@ -27,12 +27,12 @@ public class BestWeatherGameEverActivity extends Activity {
         easyButton =(Button) findViewById(R.id.easyButton);
         easyButton.setClickable(true);
         middleButton =(Button) findViewById(R.id.middleButton);
-        if (score.getScore()<= 100){ //100 variabel
+        if (!score.isMediumLevelActivated()){
         	middleButton.setClickable(false);
         	middleButton.getBackground().setAlpha(50);
         }
         hardButton =(Button) findViewById(R.id.hardButton);
-        if (score.getScore()<= 350){ //350 variabel
+        if (!score.isExpertLevelActivated()){
         	hardButton.setClickable(false);
         	hardButton.getBackground().setAlpha(50);
         }
