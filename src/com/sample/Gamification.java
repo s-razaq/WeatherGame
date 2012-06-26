@@ -13,7 +13,6 @@ public class Gamification extends Activity {
 			"Estimator", "Weather Expert", "Master Forecaster",
 			"Weather Wizard" };
 	private int[] pointsNeededForLevel = { 0, 40, 100, 200, 350, 555 };
-	private SharedPreferences settings;
 	private Context ctx;
 
 	public static Gamification getInstance(Context ctx) {
