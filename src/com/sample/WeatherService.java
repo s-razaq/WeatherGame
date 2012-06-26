@@ -102,6 +102,7 @@ public class WeatherService {
 					.getJSONArray("current_condition").getJSONObject(0);
 			d = Integer.parseInt(jsonObj.getString("temp_C"));
 			Log.i("BestWeatherGame", "Temp_C in " + requestValue + " = " + d);
+			Log.i("BestWeatherGame", "Observation_time" + " = " + jsonObj.getString("observation_time"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

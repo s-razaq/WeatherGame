@@ -3,13 +3,8 @@ package com.sample;
 
 
 import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
-
-
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.PopupWindow;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +29,7 @@ public class GameActivity extends Activity {
 	static String[] rawCities = new String[2];
 	static String countryCode;
 	WheelView temValue;
+	int[] res;
 	
 	public void getNewCity() {
 	    
@@ -51,7 +47,7 @@ public class GameActivity extends Activity {
      }
 	 
 	 public int[] compareResult(){//Parameter ist die aktuelle Einstellung des Wheels
-		 int[] res = new int[3];
+		 res = new int[3];
 		 res[0] = ws.getTemperature(city); //Webservice Daten holen
 		 res[1] = NumberClass.values[temValue.getCurrentItem()]; //Wheeler Daten holen
 		 res[2] = Math.abs(res[0] - res[1]); //Abweichung fuer Gamification
@@ -92,16 +88,12 @@ public class GameActivity extends Activity {
 	               .setCancelable(false)
 	               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 	                   public void onClick(DialogInterface dialog, int id) {
-	                	   //hier muss Methode zum Punkte berechnen aufgerufen werden
-	                	   
-	                	   //Show new City
 	                	   getNewCity();
 	                	   dialog.cancel();
 	                   }
 	               })
 	               .setNegativeButton("Back to menu", new DialogInterface.OnClickListener() {
 	                   public void onClick(DialogInterface dialog, int id) {
-	                	   //hier muss Methode zum Punkte berechnen aufgerufen werden
 	                	   
 	                	   returnToBestWeatherGameEverActivity();
 	                   }
@@ -124,6 +116,19 @@ public class GameActivity extends Activity {
 				        final TextView curTemp = (TextView) layout.findViewById(R.id.currentTemperature);
 				        final TextView devLabel = (TextView) layout.findViewById(R.id.deviation);
 				        final TextView scoreLabel = (TextView) layout.findViewById(R.id.currentPoints);
+				        
+				        // Get instance for RatingBar on diaglog
+				        final RatingBar rb = (RatingBar) layout.findViewById(R.id.ratingBar1);
+				       
+				        // Calculating value for rating bar
+				        float ratingValue = (float) (5 - (0.5*res[2]));
+				        if(ratingValue < 0){
+				        	ratingValue = 0;
+				        }
+				        
+				       // Set rating on Dialog
+				        rb.setRating(ratingValue);
+				        rb.setEnabled(false);
 				          			  		
 						// Set userAnswer on Dialog
 						userAnswer.setText(""+results[1]);
