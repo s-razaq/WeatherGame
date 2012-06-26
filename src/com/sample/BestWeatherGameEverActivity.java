@@ -69,11 +69,12 @@ public class BestWeatherGameEverActivity extends Activity {
     	super.onResume();
     	score = Gamification.getInstance(this.getApplicationContext());
         easyButton.setClickable(true);
-        if (score.getScore()<= 100){ //100 variabel
+        if (!score.isMediumLevelActivated()){
         	middleButton.setClickable(false);
         	middleButton.getBackground().setAlpha(50);
         }
-        if (score.getScore()<= 350){ //350 variabel
+        hardButton =(Button) findViewById(R.id.hardButton);
+        if (!score.isExpertLevelActivated()){
         	hardButton.setClickable(false);
         	hardButton.getBackground().setAlpha(50);
         }
