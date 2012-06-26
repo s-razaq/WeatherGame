@@ -64,6 +64,20 @@ public class Gamification extends Activity {
 				break;
 			}
 		}
+		//check if player decreased one level
+		for (int i = 1; i <= pointsNeededForLevel.length; i++) {
+			if (score >= pointsNeededForLevel[i - 1]
+					&& pointsNeededForLevel[i - 1] > newScore) {
+				int duration = Toast.LENGTH_LONG;
+				score = newScore;
+				CharSequence text = "Oh no! You lost too many points. Your new level is " + this.getLevelName();
+				System.out.println(text);
+				Toast toast = Toast.makeText(this.ctx, text, duration);
+				toast.show();						
+				break;
+			}
+		}
+			
 		return score = newScore;
 	}
 
