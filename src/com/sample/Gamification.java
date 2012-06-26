@@ -87,7 +87,12 @@ public class Gamification extends Activity {
 		int level = 0;
 		for (int i = 1; i <= levelDescription.length; i++) {
 			if (score < pointsNeededForLevel[i - 1]) {
-				level = i - 1;
+				if(score<0) {
+					level = 1;
+				}
+				else {
+					level = i - 1;
+				}
 				break;
 			} else {
 				level = i;

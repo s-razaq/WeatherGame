@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 public class NumberClass extends AbstractWheelTextAdapter {
     	
-        private int values[] = new int [100];
+        public static int values[] = new int [100];
         
         /**
          * Constructor

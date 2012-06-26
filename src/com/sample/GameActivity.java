@@ -46,7 +46,7 @@ public class GameActivity extends Activity {
 	 public int compareResult(){//Parameter ist die aktuelle Einstellung des Wheels
 		 int ergebnis = ws.getTemperature(city); //Webservice Daten holen
 		 int deviation;
-		 deviation = Math.abs(ergebnis - temValue.getCurrentItem()); //Abweichung für Gamification
+		 deviation = Math.abs(ergebnis - NumberClass.values[temValue.getCurrentItem()]); //Abweichung fï¿½r Gamification
 		 return deviation;
 	 }
 	

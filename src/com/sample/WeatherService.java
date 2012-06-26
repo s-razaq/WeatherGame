@@ -2,7 +2,6 @@ package com.sample;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.apache.http.HttpResponse;
@@ -13,7 +12,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.util.Log;
 
 public class WeatherService {
@@ -56,9 +55,16 @@ public class WeatherService {
 		postRequest();
 		return parseJSON(jsonResponse.toString());
 	}
+	
+	
+	public double getTemperature(double latitude, double longitude){
+		requestValue = String.valueOf(latitude) + "," + String.valueOf(longitude);
+		postRequest();
+		return parseJSON(jsonResponse.toString());	
+	}
 
 	private void createUrlString() {
-		urlString = BASE_URL + "?key=" + KEY + "&q=" + requestValue
+		urlString = BASE_URL + "?key=" + KEY + "&q=" + Uri.encode(requestValue)
 				+ "&format=" + FORMAT;
 	}
 
@@ -95,6 +101,7 @@ public class WeatherService {
 			JSONObject jsonObj = new JSONObject(value).getJSONObject("data")
 					.getJSONArray("current_condition").getJSONObject(0);
 			d = Integer.parseInt(jsonObj.getString("temp_C"));
+			Log.i("BestWeatherGame", "Temp_C in " + requestValue + " = " + d);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
