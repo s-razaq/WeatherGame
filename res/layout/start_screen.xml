@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads" 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgimage">"
+    android:background="@drawable/bgimage">
 
     <Button
         android:id="@+id/middleButton"
@@ -42,16 +43,6 @@
         android:layout_marginBottom="33dp"
         android:text="@string/easy_button"
         android:onClick="onClickEasy" />
-
-    <TextView
-        android:id="@+id/LevelAnzeige"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PunktestandAnzeige"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="@string/levelAnzeige"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/chooseDifficulty"
@@ -72,5 +63,25 @@
         android:layout_marginTop="17dp"
         android:text="@string/theBestWeatherGameEver"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+      <com.google.ads.AdView
+          android:id="@+id/adView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          ads:adSize="BANNER"
+          ads:adUnitId="a14fe9af8bedc8a"
+          ads:loadAdOnCreate="true" >
+      </com.google.ads.AdView>
+
+      <TextView
+          android:id="@+id/LevelAnzeige"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/hardButton"
+          android:layout_below="@+id/PunktestandAnzeige"
+          android:text="@string/levelAnzeige"
+          android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
