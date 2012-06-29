@@ -18,11 +18,12 @@ public class BestWeatherGameEverActivity extends Activity {
 	public static Button hardButton;
 	public static TextView punktestandAnzeige;
 	public static TextView levelAnzeige;
-	
+	 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.start_screen);
+        setContentView(R.layout.start_screen);       
+        
         score = Gamification.getInstance(this.getApplicationContext());
         easyButton =(Button) findViewById(R.id.easyButton);
         easyButton.setClickable(true);
@@ -43,7 +44,7 @@ public class BestWeatherGameEverActivity extends Activity {
         levelAnzeige.setText(score.getLevelName());
         
         RandCity randCity = RandCity.getInstance(this.getApplicationContext());
-        randCity.loadCSV();
+        randCity.loadCSV();     
        
     }
     
@@ -65,6 +66,7 @@ public class BestWeatherGameEverActivity extends Activity {
     	intent.putExtra("difficulty", DIFF_HARD);
     	startActivity(intent);
     }
+    
     public void onResume(){
     	super.onResume();
     	score = Gamification.getInstance(this.getApplicationContext());
@@ -84,4 +86,5 @@ public class BestWeatherGameEverActivity extends Activity {
         levelAnzeige.setText(score.getLevelName());
         
     }
+    
 }
