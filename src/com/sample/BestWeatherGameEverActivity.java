@@ -33,6 +33,8 @@ public class BestWeatherGameEverActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen);       
         
+        checkConn();
+        
         score = Gamification.getInstance(this.getApplicationContext());
         easyButton =(Button) findViewById(R.id.easyButton);
         easyButton.setClickable(true);
@@ -78,6 +80,7 @@ public class BestWeatherGameEverActivity extends Activity {
     
     public void onResume(){
     	super.onResume();
+    	checkConn();
     	score = Gamification.getInstance(this.getApplicationContext());
         easyButton.setClickable(true);
         if (!score.isMediumLevelActivated()){
@@ -95,6 +98,31 @@ public class BestWeatherGameEverActivity extends Activity {
         levelAnzeige.setText(score.getLevelName());
         
     }
+    
+    public AlertDialog createWarningDialog(){
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("Warning");
+		alertDialog.setMessage("Your internet connection is not available, please try again in a few minutes.");
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+		   public void onClick(DialogInterface dialog, int which){
+			   finish();
+		   }
+		});
+		alertDialog.setIcon(R.drawable.warning);
+		return alertDialog;
+	}
+
+	public void checkConn() {
+		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo netInfo = cm.getActiveNetworkInfo();
+		if (!(netInfo != null && netInfo.isConnectedOrConnecting())) {
+			if(alertDialog == null){
+				alertDialog = createWarningDialog();
+			}
+			alertDialog.show();
+		}
+
+	}
 
     
 }
