@@ -8,9 +8,9 @@
     <string name="easy_button">Easy</string>
     <string name="middleButton">Medium</string>
     <string name="hardButton">Hard</string>
-    <string name="PunktestandAnzeige">Punktestand: 0</string>
-    <string name="levelAnzeige">&quot;Level: 0&quot;</string>
-    <string name="stadt">Stadt</string>
+    <string name="PunktestandAnzeige">Score: 0</string>
+    <string name="levelAnzeige">&quot;Level: 0</string>
+    <string name="stadt">City</string>
     <string name="enterButton">Enter</string>
     <string name="wheel">wheel</string>
     <string name="userAnswer">userAnswer</string>
@@ -18,5 +18,6 @@
     <string name="deviation">deviation</string>
     <string name="currentLevel">currentLevel</string>
     <string name="currentPoints">currentPoints</string>
-
+    <string name="Help">Help</string>
+    <string name="Reset_Score">Reset Score</string>
 </resources>

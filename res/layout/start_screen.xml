@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hardButton"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="31dp"
         android:text="@string/PunktestandAnzeige"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -79,8 +79,8 @@
           android:id="@+id/LevelAnzeige"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/hardButton"
           android:layout_below="@+id/PunktestandAnzeige"
+          android:layout_centerInParent="true"
           android:text="@string/levelAnzeige"
           android:textAppearance="?android:attr/textAppearanceMedium" />
 

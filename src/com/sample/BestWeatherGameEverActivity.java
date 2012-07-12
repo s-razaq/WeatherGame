@@ -8,10 +8,13 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class BestWeatherGameEverActivity extends Activity {
 	/** Called when the activity is first created. */
@@ -52,9 +55,9 @@ public class BestWeatherGameEverActivity extends Activity {
         }
         punktestandAnzeige = (TextView) findViewById(R.id.PunktestandAnzeige);
         int i = score.getScore();
-        punktestandAnzeige.setText("" + i);
+        punktestandAnzeige.setText("Score: " + i);
         levelAnzeige = (TextView) findViewById(R.id.LevelAnzeige);
-        levelAnzeige.setText(score.getLevelName());
+        levelAnzeige.setText("Level: "+ score.getLevelName());
         
         //loading CSV with cities
         RandCity randCity = RandCity.getInstance(this.getApplicationContext());
@@ -97,9 +100,9 @@ public class BestWeatherGameEverActivity extends Activity {
         	hardButton.getBackground().setAlpha(50);
         }
         int i = score.getScore();
-        punktestandAnzeige.setText("" + i);
+        punktestandAnzeige.setText("Score: " + i);
         levelAnzeige = (TextView) findViewById(R.id.LevelAnzeige);
-        levelAnzeige.setText(score.getLevelName());
+        levelAnzeige.setText("Level: "+ score.getLevelName());
         
     }
     //method with a dialog when user loses internet connection
@@ -127,6 +130,54 @@ public class BestWeatherGameEverActivity extends Activity {
 		}
 
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Build menu
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.game_menu, menu);
+	    return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Selection within menu (help, reset)
+	    switch (item.getItemId()) {
+	        case R.id.reset:
+	            gameReset();
+	            return true;
+	        case R.id.help:
+	        	InstructionsDialog();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+
+	public void gameReset(){
+        score.gameReset();
+        punktestandAnzeige.setText("Score: 0");
+        levelAnzeige = (TextView) findViewById(R.id.LevelAnzeige);
+        levelAnzeige.setText("Level: "+ score.getLevelName());
+	}
+	
+	public void InstructionsDialog(){
+
+		  AlertDialog.Builder ad = new AlertDialog.Builder(this);
+		  ad.setIcon(R.drawable.icon);
+		  ad.setTitle("Help ...");
+		  ad.setView(LayoutInflater.from(this).inflate(R.layout.help_dialog,null));
+		  ad.setCancelable(false);
+		  ad.setPositiveButton("OK", 
+		    new android.content.DialogInterface.OnClickListener() {
+		     public void onClick(DialogInterface dialog, int arg1) {
+		      // OK, go back to Main menu
+		     }
+		    }
+		   );
+		  AlertDialog alert = ad.create();
+		  alert.show();
+		 }
 
     
 }

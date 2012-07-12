@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@+id/ScrollView01" 
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent" 
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical" 
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:id="@+id/instructions_view" >
+
+<TextView   android:id="@+id/TextView01" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:text="This application is supposed to improve your wheather understanding of the world. Different cities located in Europe and globally demand everything from your skills.\r\n In order to succeed, you need to guess the current tempurates of those cities by using the wheeler. Click 'Enter' to compare your guess to current one prompted from the web. \r\n There are three difficulties available. 'Easy' is comprised of European cities, whereas 'Medium' exposes you to global ones. 'Hard' only shows GPS Position. With a click on the city, a pop up with the city's country code appears."></TextView>
+</LinearLayout>
+</ScrollView>

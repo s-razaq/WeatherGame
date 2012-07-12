@@ -131,5 +131,16 @@ public class Gamification extends Activity {
 				+ levelDescription[level - 1]);
 		return level;
 	}
+	
+	public void gameReset(){
+		// Reset Score
+		SharedPreferences settings = PreferenceManager
+				.getDefaultSharedPreferences(ctx);
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putInt("score", 0);
+			// Sets score to zero!
+			editor.commit();
+			score = 0;
+	}
 
 }

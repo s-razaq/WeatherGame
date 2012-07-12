@@ -42,42 +42,7 @@ public class GameActivity extends Activity {
         stadt.setText(city);
 	}
 	//method for going back to BestWeatherGameEverActivity
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		//Aufbau des menues
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.game_menu, menu);
-	    return true;
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    // selektion innerhalb des menüs (hilfe, reset)
-	    switch (item.getItemId()) {
-	        case R.id.reset:
-	            gameReset();
-	            return true;
-	        case R.id.help:
-	            showHelp();
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
-	}
-	
-	
-	public void gameReset(){
-		//zurücksetzen des spielstandes
-		SharedPreferences settings = PreferenceManager
-				.getDefaultSharedPreferences(getApplicationContext());
-			SharedPreferences.Editor editor = settings.edit();
-			editor.putInt("score", 0);
-			// setzt spielstand auf 0!
-			editor.commit();
-	}
-	public void showHelp(){
-		//hilfe activity laden.
-	}
+
 	 public void returnToBestWeatherGameEverActivity(){
      	
      	finish();
