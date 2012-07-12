@@ -31,6 +31,7 @@ public class GameActivity extends Activity {
 	WheelView temValue;
 	int[] res;
 	
+	//method for getting a random city
 	public void getNewCity() {
 	    
         RandCity randCity = RandCity.getInstance(this.getApplicationContext());
@@ -40,17 +41,17 @@ public class GameActivity extends Activity {
         countryCode = rawCities[1];
         stadt.setText(city);
 	}
-	
+	//method for going back to BestWeatherGameEverActivity
 	 public void returnToBestWeatherGameEverActivity(){
      	
      	finish();
      }
 	 
-	 public int[] compareResult(){//Parameter ist die aktuelle Einstellung des Wheels
+	 public int[] compareResult(){//parameter is actual number of the Wheeler
 		 res = new int[3];
-		 res[0] = ws.getTemperature(city); //Webservice Daten holen
-		 res[1] = NumberClass.values[temValue.getCurrentItem()]; //Wheeler Daten holen
-		 res[2] = Math.abs(res[0] - res[1]); //Abweichung fuer Gamification
+		 res[0] = ws.getTemperature(city); //get data from Webservice
+		 res[1] = NumberClass.values[temValue.getCurrentItem()];
+		 res[2] = Math.abs(res[0] - res[1]); //devation from gamification class
 		 return res;
 	 }
 	
@@ -75,6 +76,7 @@ public class GameActivity extends Activity {
 	        countryCode = rawCities[1];
 	        stadt.setText(city);
 	         
+	        //creating wheeler
 	        temValue = (WheelView) findViewById(R.id.value);
 	        temValue.setViewAdapter(new NumberClass(this));
 	        temValue.setCurrentItem(60);
@@ -147,7 +149,7 @@ public class GameActivity extends Activity {
 				}
 	        	
 	        });
-	        
+	        // little popup to get the country of the city
 	        TextView cityLabel = (TextView) findViewById(R.id.stadt);
 	        cityLabel.setOnClickListener(new OnClickListener() {
 				@Override

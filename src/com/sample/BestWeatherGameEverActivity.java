@@ -34,15 +34,17 @@ public class BestWeatherGameEverActivity extends Activity {
         setContentView(R.layout.start_screen);       
         
         checkConn();
-        
+        //create objects with references
         score = Gamification.getInstance(this.getApplicationContext());
         easyButton =(Button) findViewById(R.id.easyButton);
         easyButton.setClickable(true);
+        //middleButton is not clickable without enough points
         middleButton =(Button) findViewById(R.id.middleButton);
         if (!score.isMediumLevelActivated()){
         	middleButton.setClickable(false);
         	middleButton.getBackground().setAlpha(50);
         }
+        //hardButton is not clickable without enough points
         hardButton =(Button) findViewById(R.id.hardButton);
         if (!score.isExpertLevelActivated()){
         	hardButton.setClickable(false);
@@ -54,30 +56,32 @@ public class BestWeatherGameEverActivity extends Activity {
         levelAnzeige = (TextView) findViewById(R.id.LevelAnzeige);
         levelAnzeige.setText(score.getLevelName());
         
+        //loading CSV with cities
         RandCity randCity = RandCity.getInstance(this.getApplicationContext());
         randCity.loadCSV();     
        
     }
     
-    
+    //actionListner for EasyButton
     public void onClickEasy(final View myView) {
     	final Intent intent = new Intent(this, GameActivity.class);
     	intent.putExtra("difficulty", DIFF_EASY);
     	startActivity(intent);
     }
-    
+    //actionListner for middleButton
     public void onClickMedium(final View myView) {
     	final Intent intent = new Intent(this, GameActivity.class);
     	intent.putExtra("difficulty", DIFF_MEDIUM);
     	startActivity(intent);
     }
-    
+    //actionListner for hardButton
     public void onClickHard(final View myView) {
     	final Intent intent = new Intent(this, GameActivity.class);
     	intent.putExtra("difficulty", DIFF_HARD);
     	startActivity(intent);
     }
     
+    //method for going back to the BestWeatherGameEverActivity
     public void onResume(){
     	super.onResume();
     	checkConn();
@@ -98,7 +102,7 @@ public class BestWeatherGameEverActivity extends Activity {
         levelAnzeige.setText(score.getLevelName());
         
     }
-    
+    //method with a dialog when user loses internet connection
     public AlertDialog createWarningDialog(){
 		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 		alertDialog.setTitle("Warning");
@@ -111,7 +115,7 @@ public class BestWeatherGameEverActivity extends Activity {
 		alertDialog.setIcon(R.drawable.warning);
 		return alertDialog;
 	}
-
+    //method for checking internet connection
 	public void checkConn() {
 		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo netInfo = cm.getActiveNetworkInfo();
