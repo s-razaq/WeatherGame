@@ -1,3 +1,4 @@
+package de.razaq;
 //package com.sample;
 //
 //public class TestGamification {

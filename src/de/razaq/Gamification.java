@@ -1,4 +1,4 @@
-package com.sample;
+package de.razaq;
 
 import android.app.Activity;
 import android.content.Context;

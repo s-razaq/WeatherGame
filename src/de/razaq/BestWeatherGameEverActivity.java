@@ -1,4 +1,5 @@
-package com.sample;
+package de.razaq;
+
 
 import android.app.Activity;
 import android.app.AlertDialog;

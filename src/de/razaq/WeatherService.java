@@ -1,4 +1,4 @@
-package com.sample;
+package de.razaq;
 
 import java.io.BufferedReader;
 import java.io.IOException;

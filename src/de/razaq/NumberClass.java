@@ -1,4 +1,5 @@
-package com.sample;
+package de.razaq;
+
 
 import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
 import android.content.Context;
