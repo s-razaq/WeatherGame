@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,15 @@ public class GameActivity extends Activity {
 	static String countryCode;
 	WheelView temValue;
 	int[] res;
+	
+	TextView userAnswer;
+    TextView curTemp;
+    TextView devLabel;
+    TextView scoreLabel;
+      
+    // Get instance for RatingBar on diaglog
+    RatingBar rb;
+    AlertDialog alert;
 	
 	//method for getting a random city
 	public void getNewCity() {
@@ -102,54 +112,29 @@ public class GameActivity extends Activity {
 	                   }
 	               });
 			
-	        final AlertDialog alert = builder.create();
+	        alert = builder.create();
 	  
 	        
 	        //activate enterButton
 	        enterButton.setOnClickListener(new OnClickListener(){
 				public void onClick(View v) {
 					if(v.getId() == R.id.enterButton) {
-						Gamification game = Gamification.getInstance(getApplicationContext());
-						int[] results = compareResult();
-						game.newScoreForResult(results[2]);
-						System.out.println(game.getScore());
-				       
+						new RetrieveWeatherTask().execute();
 						// Get instances for textviews on dialog
-				        final TextView userAnswer = (TextView) layout.findViewById(R.id.userAnswer);
-				        final TextView curTemp = (TextView) layout.findViewById(R.id.currentTemperature);
-				        final TextView devLabel = (TextView) layout.findViewById(R.id.deviation);
-				        final TextView scoreLabel = (TextView) layout.findViewById(R.id.currentPoints);
+				        userAnswer = (TextView) layout.findViewById(R.id.userAnswer);
+				        curTemp = (TextView) layout.findViewById(R.id.currentTemperature);
+				        devLabel = (TextView) layout.findViewById(R.id.deviation);
+				        scoreLabel = (TextView) layout.findViewById(R.id.currentPoints);
 				        
 				        // Get instance for RatingBar on diaglog
-				        final RatingBar rb = (RatingBar) layout.findViewById(R.id.ratingBar1);
-				       
-				        // Calculating value for rating bar
-				        float ratingValue = (float) (5 - (0.5*res[2]));
-				        if(ratingValue < 0){
-				        	ratingValue = 0;
-				        }
-				        
-				       // Set rating on Dialog
-				        rb.setRating(ratingValue);
-				        rb.setEnabled(false);
-				          			  		
-						// Set userAnswer on Dialog
-						userAnswer.setText(""+results[1]);
-				        
-				        // Set CurrentTemp on Dialog
-				        curTemp.setText(""+results[0]);
-
-				        // Set deviation on Dialog
-				        devLabel.setText(""+results[2]);
-				        
-				        // Set score on Dialog
-				        scoreLabel.setText(""+game.getScore());
-				        
-						alert.show();
+				        rb = (RatingBar) layout.findViewById(R.id.ratingBar1);
 					}
 				}
 	        	
 	        });
+	        
+	        
+	        
 	        // little popup to get the country of the city
 	        TextView cityLabel = (TextView) findViewById(R.id.stadt);
 	        cityLabel.setOnClickListener(new OnClickListener() {
@@ -169,4 +154,52 @@ public class GameActivity extends Activity {
 	   
 	        
 	   }
+	
+	
+	private class RetrieveWeatherTask extends AsyncTask<Void, Void, Void>{
+
+		
+		@Override
+		protected Void doInBackground(Void... params) {
+
+			Gamification game = Gamification
+					.getInstance(getApplicationContext());
+			int[] results = compareResult();
+			game.newScoreForResult(results[2]);
+			System.out.println(game.getScore());
+
+			// Calculating value for rating bar
+			float ratingValue = (float) (5 - (0.5 * res[2]));
+			if (ratingValue < 0) {
+				ratingValue = 0;
+			}
+
+			// Set rating on Dialog
+			rb.setRating(ratingValue);
+			rb.setEnabled(false);
+
+			// Set userAnswer on Dialog
+			userAnswer.setText("" + results[1]);
+
+			// Set CurrentTemp on Dialog
+			curTemp.setText("" + results[0]);
+
+			// Set deviation on Dialog
+			devLabel.setText("" + results[2]);
+
+			// Set score on Dialog
+			scoreLabel.setText("" + game.getScore());
+
+			return null;
+			
+		}
+
+		
+		protected Void onPostExecute(Void... params) {
+	        // TODO: check this.exception 
+	        // TODO: do something with the feed
+			alert.show();
+			return null;
+	    }
+	}
 }
