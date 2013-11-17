@@ -119,7 +119,7 @@ public class GameActivity extends Activity {
 	        enterButton.setOnClickListener(new OnClickListener(){
 				public void onClick(View v) {
 					if(v.getId() == R.id.enterButton) {
-						new RetrieveWeatherTask().execute();
+						
 						// Get instances for textviews on dialog
 				        userAnswer = (TextView) layout.findViewById(R.id.userAnswer);
 				        curTemp = (TextView) layout.findViewById(R.id.currentTemperature);
@@ -128,6 +128,12 @@ public class GameActivity extends Activity {
 				        
 				        // Get instance for RatingBar on diaglog
 				        rb = (RatingBar) layout.findViewById(R.id.ratingBar1);
+				        
+						Gamification game = Gamification
+								.getInstance(getApplicationContext());
+				        
+						new RetrieveWeatherTask().execute(game);
+						
 					}
 				}
 	        	
@@ -156,17 +162,15 @@ public class GameActivity extends Activity {
 	   }
 	
 	
-	private class RetrieveWeatherTask extends AsyncTask<Void, Void, Void>{
+	private class RetrieveWeatherTask extends AsyncTask<Gamification, Void, Void>{
 
 		
 		@Override
-		protected Void doInBackground(Void... params) {
+		protected Void doInBackground(Gamification... params) {
 
-			Gamification game = Gamification
-					.getInstance(getApplicationContext());
 			int[] results = compareResult();
-			game.newScoreForResult(results[2]);
-			System.out.println(game.getScore());
+			params[0].newScoreForResult(results[2]);
+			System.out.println(params[0].getScore());
 
 			// Calculating value for rating bar
 			float ratingValue = (float) (5 - (0.5 * res[2]));
@@ -188,18 +192,18 @@ public class GameActivity extends Activity {
 			devLabel.setText("" + results[2]);
 
 			// Set score on Dialog
-			scoreLabel.setText("" + game.getScore());
+			scoreLabel.setText("" + params[0].getScore());
 
 			return null;
 			
 		}
-
 		
-		protected Void onPostExecute(Void... params) {
-	        // TODO: check this.exception 
-	        // TODO: do something with the feed
+		@Override
+		protected void onPostExecute(Void result) {
 			alert.show();
-			return null;
-	    }
+		}
+
+
+
 	}
 }
