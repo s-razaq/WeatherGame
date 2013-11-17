@@ -28,8 +28,8 @@ public class WeatherService {
 	private HttpResponse response;
 
 	/* Variables that store information about service url and parameters that are meadatory */
-	private final String BASE_URL = "http://free.worldweatheronline.com/feed/weather.ashx";
-	private final String KEY = "adaf549abd120300122505";
+	private final String BASE_URL = "http://api.worldweatheronline.com/free/v1/weather.ashx";
+	private final String KEY = "7mnypztddtcsvzp69uny4vse";
 	private final String FORMAT = "json";
 	private String requestValue = "Karlsruhe";
 	private String urlString;
