@@ -6,7 +6,12 @@ Simple Android game where user has to guess the current temperature for a given 
 Details
 =======
 
-This application is supposed to improve your wheather understanding of the world. Different cities located in Europe and globally demand everything from your skills.\r\n In order to succeed, you need to guess the current tempurates of those cities by using the wheeler. Click 'Enter' to compare your guess to current one prompted from the web. \r\n There are three difficulties available. 'Easy' is comprised of European cities, whereas 'Medium' exposes you to global ones. 'Hard' only shows GPS Position. With a click on the city, a pop up with the city's country code appears.
+This application is supposed to improve your wheather understanding of the world. Different cities located in Europe and globally demand everything from your skills.
+
+In order to succeed, you need to guess the current tempurates of those cities by using the wheeler. Click 'Enter' to compare your guess to current one prompted from the web.
+
+There are three difficulties available. 'Easy' is comprised of European cities, whereas 'Medium' exposes you to global ones. 'Hard' only shows GPS Position. With a click on the city, a pop up with the city's country code appears.
+
 
 Screenshots
 ==========
