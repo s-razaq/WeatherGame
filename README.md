@@ -20,3 +20,21 @@ Screenshots
 ![City](https://dl.dropboxusercontent.com/u/3672489/BestWeatherGame/Screenshot%20from%202013-11-18%2020%3A23%3A35.png)
 
 ![Result](https://dl.dropboxusercontent.com/u/3672489/BestWeatherGame/Screenshot%20from%202013-11-18%2020%3A24%3A09.png)
+
+
+Dependencies
+============
+
+This project depend on the android-wheel library. To get the source code of it, just tpye on terminal:
+
+`svn checkout http://android-wheel.googlecode.com/svn/trunk/ android-wheel-read-only `
+
+In the path you made the download, you will find two folders: wheel and wheel_demo, the important one obviously is wheel, import it as project in eclipse: File-> Import-> General -> Existing Projects into Workspace and choose the folder “wheel” you just download.
+
+![Package](https://dl.dropboxusercontent.com/u/3672489/BestWeatherGame/1.jpg)
+
+Once we’ve imported the source code, we need to add it as library to our project.
+
+Go to Project-> Properties -> Android, in section Library press the button Add and select the wheel project
+
+![Library](https://dl.dropboxusercontent.com/u/3672489/BestWeatherGame/2.jpg)
